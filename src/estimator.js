@@ -26,7 +26,7 @@ const covid19ImpactEstimator = (data) => {
 
   // estimated number of severe positive cases
   impact.severeCasesByRequestedTime = impact.infectionsByRequestedTime * 0.15;
-	// number of avaiable beds for severe cases
+  // number of avaiable beds for severe cases
   const beds = (data.totalHospitalBeds * 0.35);
   impact.hospitalBedsByRequestedTime = beds / impact.severeCasesByRequestedTime;
 
@@ -37,7 +37,7 @@ const covid19ImpactEstimator = (data) => {
   // economy loss for impact case
   const lossCalc = impact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
   impact.dollarsInFlight = lossCalc * data.region.avgDailyIncomeInUSD;
-	// economy loss for severe impact case
+  // economy loss for severe impact case
   const popCalc = severeImpact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
   severeImpact.dollarsInFlight = popCalc * data.region.avgDailyIncomeInUSD;
   impactEstimation.push({ severeImpact });
