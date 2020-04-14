@@ -39,7 +39,7 @@ const covid19ImpactEstimator = (data) => {
   impact.dollarsInFlight = lossCalc * data.region.avgDailyIncomeInUSD;
 	
 	// economy loss for severe impact case
-	const popCalc = severeImpact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation ;
+	const popCalc = severeImpact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
   severeImpact.dollarsInFlight = popCalc * data.region.avgDailyIncomeInUSD;
   impactEstimation.push({ severeImpact });
   impactEstimation.push({ impact });
