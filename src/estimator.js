@@ -12,9 +12,9 @@ const covid19ImpactEstimator = (data) => {
   //   totalHospitalBeds: 1380614
   // };
 
-  const impactEstimation = {};
-  const severeImpact = {};
-  const impact = {};
+const impactEstimation = {};
+const severeImpact = {};
+const impact = {};
   impactEstimation.push({ data });
   // estimate the number of currently infected
   impact.currentlyInfected = data.reportedCases * 10;
@@ -27,19 +27,19 @@ const covid19ImpactEstimator = (data) => {
   // estimated number of severe positive cases
   impact.severeCasesByRequestedTime = impact.infectionsByRequestedTime * 0.15;
 	// number of avaiable beds for severe cases
-	const beds = (data.totalHospitalBeds * 0.35);
+const beds = (data.totalHospitalBeds * 0.35);
   impact.hospitalBedsByRequestedTime = beds / impact.severeCasesByRequestedTime;
 
-  // estimated number for very severe positive cases
+ // estimated number for very severe positive cases
   severeImpact.severeCasesByRequestedTime = severeImpact.infectionsByRequestedTime * 0.05;
   severeImpact.casesForVentilatorsByRequestedTime = severeImpact.infectionsByRequestedTime * 0.02;
 
 	// economy loss for impact case
-	const lossCalc = impact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
+const lossCalc = impact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
   impact.dollarsInFlight = lossCalc * data.region.avgDailyIncomeInUSD;
 	
 	// economy loss for severe impact case
-	const popCalc = severeImpact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
+const popCalc = severeImpact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
   severeImpact.dollarsInFlight = popCalc * data.region.avgDailyIncomeInUSD;
   impactEstimation.push({ severeImpact });
   impactEstimation.push({ impact });
